@@ -1,0 +1,59 @@
+name: advanced_fitness_app
+description: Gelişmiş egzersiz ve beslenme takip uygulaması.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0' # Güncel Dart sürümünü zorunlu kılıyoruz
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  fl_chart: ^0.69.0
+  flutter_native_splash: ^2.4.1
+
+  # --- MİMARİ VE STATE YÖNETİMİ ---
+  flutter_bloc: ^8.1.3 # Ekranların durumlarını (Yükleniyor, Hata, Dolu) yönetmek için
+  equatable: ^2.0.5 # BLoC state'lerini birbiriyle kolayca karşılaştırmak için
+
+  # --- AĞ VE API İŞLEMLERİ ---
+  dio: ^5.3.3 # İnternetten veri çekmek (GET/POST) için kullanacağımız güçlü HTTP kütüphanesi
+  
+  # --- GÜVENLİK ---
+  flutter_dotenv: ^5.1.0 # API anahtarlarımızı (Wger vb.) kodun içine değil, gizli .env dosyasına yazmak için
+
+  # --- YEREL VERİTABANI (ÖNBELLEKLEME) ---
+  hive_flutter: ^1.1.0 # Verileri telefona kaydetmek için (İnternetsiz çalışabilme desteği)
+  
+  # --- GÖRSEL YÖNETİMİ ---
+  cached_network_image: ^3.3.0 # İnternetten gelen GIF ve resimleri cihaza önbellekleyip hızlıca göstermek için
+  translator: ^1.0.4+1
+  go_router: ^18.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  
+  # Hive modelleri için otomatik kod üretici araçlar
+  build_runner: ^2.4.6 
+  hive_generator: ^2.0.1 
+
+flutter:
+  uses-material-design: true
+
+  # .env dosyasını uygulamanın okuyabilmesi için assets (kaynaklar) içine ekliyoruz
+  assets:
+    - assets/images/
+    - .env
+
+# SPLASH EKRAN AYARLARI (En dışa, sıfır boşlukla yaslı olmalı)
+flutter_native_splash:
+  color: "#121212" # Uygulamanın karanlık temasına uygun bir arka plan rengi (Hex kodu)
+  image: assets/images/splash_logo.png.webp
+  
+  android_12:
+    color: "#121212"
+    image: assets/images/splash_logo.png.webp
